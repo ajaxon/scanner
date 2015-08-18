@@ -18,8 +18,6 @@ def port_scan(port):
         return False
 
 
-# thread
-
 q = Queue()
 
 
@@ -30,6 +28,7 @@ def worker():
         port_scan(port)
         q.task_done()
 
+
 # Add port numbers to queue to check
 for i in range(10000):
     q.put(i)
@@ -38,6 +37,3 @@ for i in range(100):
     t = threading.Thread(target=worker)
     # t.daemon = True
     t.start()
-
-
-
